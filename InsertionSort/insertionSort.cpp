@@ -1,6 +1,7 @@
 #include <iostream>
 
-void insertionSort(int array[], int arraySize) {
+template<typename T>
+void insertionSort(T array[], int arraySize) {
     for(int i = 0; i < arraySize; i++) {
         for(int j = i; j > 0; j--) {
             if(array[j] < array[j - 1]) {
@@ -11,7 +12,8 @@ void insertionSort(int array[], int arraySize) {
     }
 }
 
-void printArray(char arrayName[], int array[], int arraySize) {
+template<typename T>
+void printArray(char arrayName[], T array[], int arraySize) {
     std::cout << arrayName << " = { ";
     for(int i = 0; i < arraySize; i++) {
         std::cout << array[i];
@@ -22,7 +24,7 @@ void printArray(char arrayName[], int array[], int arraySize) {
 
 int main() {
     int numberArray[] = {96, 61, 27, 54, 83, 77, 32, 92};
-    int arraySize = sizeof(numberArray) / sizeof(int);
+    int arraySize = sizeof(numberArray) / sizeof(numberArray[0]);
     printArray("UNSORTED ARRAY", numberArray, arraySize);
     // UNSORTED ARRAY = { 96, 61, 27, 54, 83, 77, 32, 92 }
     insertionSort(numberArray, arraySize);

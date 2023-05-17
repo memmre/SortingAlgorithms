@@ -1,6 +1,7 @@
 #include <iostream>
 
-void selectionSort(int array[], int arraySize) {
+template<typename T>
+void selectionSort(T array[], int arraySize) {
     for(int i = 0; i < arraySize; i++) {
         int minimumIndex = i;
         for(int j = i; j < arraySize; j++) {
@@ -12,7 +13,8 @@ void selectionSort(int array[], int arraySize) {
     }
 }
 
-void printArray(char arrayName[], int array[], int arraySize) {
+template<typename T>
+void printArray(char arrayName[], T array[], int arraySize) {
     std::cout << arrayName << " = { ";
     for(int i = 0; i < arraySize; i++) {
         std::cout << array[i];
@@ -23,7 +25,7 @@ void printArray(char arrayName[], int array[], int arraySize) {
 
 int main() {
     int numberArray[] = {45, 26, 27, 4, 74, 98, 12, 50};
-    int arraySize = sizeof(numberArray) / sizeof(int);
+    int arraySize = sizeof(numberArray) / sizeof(numberArray[0]);
     printArray("UNSORTED ARRAY", numberArray, arraySize);
     // UNSORTED ARRAY = { 45, 26, 27, 4, 74, 98, 12, 50 }
     selectionSort(numberArray, arraySize);
